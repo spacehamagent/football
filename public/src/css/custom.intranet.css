@@ -1,0 +1,153 @@
+#myTable i.fa {
+    padding-left: 10px !important;
+}
+
+div.lineDiv {
+    padding-bottom: 20px;
+}
+
+.nav-user img {
+    margin-bottom: 20px !important;
+}
+
+div.grid-intranet div.grid-stack, div.grid-intranet div.grid-stack-item {
+    border-radius: 0.2px;
+    box-shadow: 0px 0px 0px 2px rgba(0,0,0,0.1);
+}
+
+.btnBlocs {
+    margin:25px 10px 5px 25px !important;
+}
+
+div.infoBloc {
+    float:left !important;
+    background-color: #000;
+    opacity: 0.6;
+    padding:5px !important;
+    font-size:10px !important;
+    z-index:999;
+    position: relative;
+    border-radius:0px 0px 15px 0px !important;
+}
+
+div.actionsBloc {
+    float:right !important;
+    background-color: #000;
+    opacity: 0.6;
+    padding:5px !important;
+    font-size:10px !important;
+    z-index:999;
+    position: relative;
+    border-radius:0px 0px 0px 15px !important;
+}
+
+div.actionsBloc i {
+    padding: 5px !important;
+}
+
+div.actionsBloc a.trash {
+    opacity: 1 !important;
+    color: red !important;
+}
+
+div.actionsBloc a.pencil {
+    opacity: 1 !important;
+    color: green !important;
+}
+
+div.blocPadding div, div.blocMargin div {
+    width: 50% !important
+}
+div.blocPadding div label, div.blocMargin div label {
+    margin-left:30px !important;
+    float:left !important;
+}
+
+div.blocPadding div input, div.blocMargin div input {
+    float:right !important;
+    margin-left:30px !important;
+    max-width: 50px !important;
+}
+
+div#myTabContentBloc hr {
+    background-color:#fff;
+}
+
+div.blocVideoImage {
+    width:100% !important;
+    height:100% !important;
+}
+
+div.blocVideoImage:hover {
+    opacity : 0.8;
+    /*background-image:url('/images/site/playButton.png');*/
+}
+
+.grid-stack > .grid-stack-item > .grid-stack-item-content{
+    left: 2px;
+    right: 2px;
+    top:2px;
+    bottom:2px;
+ }
+
+div.imgParcourirCrop img{
+    max-width:200px !important;
+    padding-bottom:10px !important;
+}
+
+div.imgParcourirCrop .actionsImgParcourir {
+    float:right !important;
+    background-color: #000;
+    opacity: 0.6;
+    padding:5px !important;
+    font-size:10px !important;
+    z-index:999;
+    position: relative;
+    border-radius:0px 0px 0px 15px !important;
+}
+
+div.actionsImgParcourir a.cropImgParcourir {
+    opacity: 1 !important;
+    color: green !important;
+    margin-left:10px !important;
+    margin-right:20px !important;
+}
+
+div.actionsImgParcourir a.trashImgParcourir {
+    opacity: 1 !important;
+    color: red !important;
+    margin-left:10px !important;
+    margin-right:20px !important;
+}
+
+div.jcrop-tracker {
+    border: 1px solid #FA1 !important;
+}
+
+div.jcrop-holder {
+    width: 600px !important;
+    height: 600px !important;
+}
+
+.listeImages {
+    height:150px;
+    overflow-y: scroll;
+}
+
+div.tab-pane hr {
+    background-color: #7097a2 !important;
+}
+
+span.nomProjet {
+    font-size: 0.5em;
+}
+
+.niveau1 {
+    padding-left:10px !important;
+}
+.niveau2 {
+    padding-left:20px !important;
+}
+.niveau3 {
+    padding-left:30px !important;
+}

@@ -1,0 +1,12 @@
+# Changer version PHP par défaut en linux
+$ sudo update-alternatives --config php
+
+
+
+
+
+#
+# VIEW exemple
+#
+
+CREATE VIEW montantNonUtilise AS SELECT bons.dateBon, membres.prenomMembre, membres.nomMembre, bons.montantAccordeBon, bons.montantUtiliseBon, bons.montantAccordeBon-bons.montantUtiliseBon AS restant FROM bons INNER JOIN membres ON membres.noMembre = bons.noMembre;

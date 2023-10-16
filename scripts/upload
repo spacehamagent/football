@@ -1,0 +1,8 @@
+#!/bin/bash
+
+set -e
+set -x
+
+PROJECT=$(basename `pwd`)
+
+ssh prog@localhost "cd /var/www/$PROJECT && /home/prog/.config/composer/vendor/bin/dep deploy $@"

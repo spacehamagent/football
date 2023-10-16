@@ -1,0 +1,6 @@
+.env
+dploy.yaml
+public/fichiersUpload/*
+vendor/*
+composer.lock
+public/images/site/facebook.png

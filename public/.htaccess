@@ -1,0 +1,140 @@
+AddDefaultCharset utf-8
+IndexIgnore *
+ServerSignature off
+
+RewriteEngine On 
+RewriteCond %{REQUEST_METHOD} ^TRACE 
+RewriteRule .* - [F]
+
+#-------------------------------------------------------------------------------
+# Bloquer accès aux IP suivantes
+#-------------------------------------------------------------------------------
+<RequireAll>
+    Require all granted
+    Require not ip 185.143.230.222
+</RequireAll>
+
+
+#-------------------------------------------------------------------------------
+#Bloquer acces de la Chine
+#-------------------------------------------------------------------------------
+Order allow,deny
+Allow from all
+Deny from 65.19.146.2 220.248.0.0/14
+
+#-------------------------------------------------------------------------------
+# Prevenir lire fichier .htacess et fichier .inc et php.ini
+#-------------------------------------------------------------------------------
+<Files ~ "^\.(?:htaccess|htpasswd)$|^.*\.(?i:ini|inc|tpl|env)">
+    order allow,deny
+    deny from all
+</Files>
+
+
+#-------------------------------------------------------------------------------
+# Configurer environnement de travail
+#-------------------------------------------------------------------------------
+SetEnv ENVIR_WEB prod
+SetEnvIf Host \.local ENVIR_WEB=dev
+
+#----------------------------------------------------------------------------------------------------
+# Sécurité : bonnes pratique et conseils (dareboost.com)
+#----------------------------------------------------------------------------------------------------
+Header always set X-Frame-Options "SAMEORIGIN" env=!frame
+
+
+
+#Header set Content-Security-Policy "default-src https://example.com:443"
+
+#Disable MIME type sniffing, which can e.g. make IE execute an innocent looking .img URL as a javascript
+#Désactivez la détection automatique du type des ressources
+Header always set X-Content-Type-Options "nosniff"
+
+#Bloquez la totalité du contenu lorsqu'une attaque XSS est suspectée | configurer un en-tête HTTP "X-XSS-Protection"
+Header always set X-XSS-Protection "1; mode=block"
+
+#Il manque une politique de sécurité sur la provenance de vos ressources | https://ole.michelsen.dk/blog/secure-your-website-with-content-security-policy.html
+Header set Content-Security-Policy  "script-src 'self' 'unsafe-inline' 'unsafe-eval' static.doubleclick.net *.facebook.com connect.facebook.net www.google-analytics.com *.googleapis.com *.google.com *.youtube.com *.cloudflare.com *.bootstrapcdn.com *.spacehamagent.com:443 *.gstatic.com *.googletagmanager.com *.sharethis.com *.jsdelivr.net;"
+
+#Feature-Policy
+#Header always set Feature-Policy "microphone 'none'; payment 'none'; sync-xhr 'self' https://www.spacehamagent.com"
+
+#Referrer Policy
+Header always set Referrer-Policy "same-origin"
+
+#HSTS
+Header set Strict-Transport-Security "max-age=31536000" env=HTTPS
+
+
+#-------------------------------------------------------------------------------
+# Forcer le www
+#-------------------------------------------------------------------------------
+RewriteCond %{HTTP_HOST} !^www\.
+RewriteCond %{HTTP_HOST} !^api\.
+RewriteRule ^(.*)$ http://www.%{HTTP_HOST}/$1 [L,R=301]
+
+#-------------------------------------------------------------------------------
+# Activer le HTTPS
+#-------------------------------------------------------------------------------
+RewriteCond %{HTTPS} !on
+RewriteCond %{HTTP_HOST} !mamachine [NC]
+RewriteCond %{HTTP_HOST} !local [NC]
+RewriteCond %{REQUEST_URI} !^/utilitaires
+# Allow .well-known through for Let's Encrypt.
+RewriteCond %{REQUEST_URI} !^/\.well\-known/acme\-challenge/ [NC]
+# Allow .well-known through for AutoSSL.
+RewriteCond %{REQUEST_URI} !^/\.well\-known/pki\-validation/ [NC]
+RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI} [QSA,L,R=301]
+
+
+RewriteEngine on
+RewriteBase /
+
+#-------------------------------------------------------------------------------
+# Forcer le slash
+#-------------------------------------------------------------------------------
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_URI} !(.*)/$
+RewriteCond %{REQUEST_URI} !(\.)
+RewriteRule ^(.*)$ http://%{HTTP_HOST}/$1/ [L,R=301]
+
+#-------------------------------------------------------------------------------
+# URL court pour le CMS
+#-------------------------------------------------------------------------------
+RewriteRule ^cms/$                      /fr/cms/connexion/ [R=301,L]
+RewriteRule ^intranet/$                 /fr/cms/connexion/ [R=301,L]
+RewriteRule ^softsystem/$               /fr/cms/connexion/ [R=301,L]
+
+RewriteRule ^fr/intranet/$              /fr/cms/connexion/ [R=301,L]
+RewriteRule ^fr/intranet/login/$        /fr/cms/connexion/ [R=301,L]
+RewriteRule ^fr/cms/$                   /fr/cms/connexion/ [R=301,L]
+
+#Redirection CMS ANGLAIS
+RewriteRule ^en/intranet/$              /en/cms/login/ [R=301,L]
+RewriteRule ^en/intranet/login/$        /en/cms/login/ [R=301,L]
+RewriteRule ^en/cms/$                   /en/cms/login/ [R=301,L]
+
+#-------------------------------------------------------------------------------
+# URL de redirection 301
+#-------------------------------------------------------------------------------
+RewriteRule ^fr/$                       /fr/accueil/ [R=301,L]
+
+RewriteRule ^en/$                       /en/home/ [R=301,L]
+
+#-------------------------------------------------------------------------------
+# pour le sitemap.xml redirigé vers le générateur du fichier
+#-------------------------------------------------------------------------------
+RewriteRule   ^sitemap.xml$  /utilitaires/run.php?action=sitemap  [L]
+
+#-------------------------------------------------------------------------------
+# Page header module bdd
+#-------------------------------------------------------------------------------
+RewriteCond %{REQUEST_URI} !^/utilitaires/ [NC]
+RewriteCond %{REQUEST_URI} !^/api/ [NC]
+RewriteCond %{REQUEST_URI} !^/fichiersUpload/ [NC]
+RewriteCond %{REQUEST_URI} !^/assets/ [NC]
+RewriteCond %{REQUEST_URI} !^/js/ [NC]
+RewriteCond %{REQUEST_URI} !^/css/ [NC]
+RewriteCond %{REQUEST_URI} !^/\.well\-known/acme\-challenge/ [NC]
+RewriteCond %{REQUEST_URI} !^/\.well\-known/pki\-validation/ [NC]
+RewriteRule ^(.*)/$ info.php?page=$1 [QSA,L]

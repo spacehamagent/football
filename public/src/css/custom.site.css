@@ -1,0 +1,161 @@
+body {
+    background-color: #000;
+    color: #fff;
+    font-family: 'Patrick Hand', cursive;
+}
+
+nav.menuSiteHaut {
+    background-color:#000 !important;
+    height: 7% !important;
+    opacity: 0.5;
+}
+
+nav.menuSiteHaut ul {
+    border-radius: 5%;
+    background-color: #000 !important;
+}
+
+nav.menuSiteHaut ul li {
+    padding:15px !important;
+}
+
+nav.menuSiteHaut ul li a {
+    color:#fff !important;
+    text-decoration: none;
+    font-size:1.3em !important;
+}
+
+nav.menuSiteHaut a:hover{
+    background-color:#A0A0A0;
+    padding:10px;
+}
+
+nav.menuSiteHaut>li>a:hover {
+    background-color: #FCC;
+    font: size 2em !important;
+    display: inline-block;
+}
+
+nav.menuSiteHaut ul.niveau-2 {
+    display:none;
+}
+
+.error {
+    color: red;
+}
+
+div.fixed-bottom {
+    color:#000;
+    background-color: #e0e0eb !important;
+    display: block !important;
+}
+
+.mojFooter {
+    padding-top: 0px;
+    margin-bottom: 0px;
+}
+
+.bottom-footer {
+    border-top: 1px solid #fff;
+    margin-top: 0px;
+    padding-top: 7px;
+}
+
+.bottom-footer p.seo {
+    font-size:0.75em !important;
+    float: left;
+}
+
+.footer-nav li {
+    display: inline;
+    padding: 0px 40px;
+}
+
+.footer-nav a {
+    color: #000;
+    text-decoration: none;
+}
+.footer-nav a:hover {
+    text-decoration: underline;
+}
+
+@media only screen and (min-width: 813px) and (max-width: 1024px) {
+    .menuSiteHaut {
+        font-size:1.7em !important;
+    }
+    footer.mojFooter {
+        margin-bottom: 400px !important;
+    }
+    h1 {
+        font-size:4em !important;
+        padding-bottom:50px;
+    }
+    .label,
+    p {
+        font-size: 2.3em !important;
+    }
+    a {
+        font-size: 3em !important;
+    }
+    div.contenu {
+        padding-top: 100px !important;
+    }
+
+    form {
+        padding-bottom:100px !important;
+    }
+
+    form label, form input, form button {
+        font-size:3em !important;
+    }
+}
+
+
+@media only screen and (min-width: 376px) and (max-width: 812px) {
+    footer.mojFooter {
+        margin-bottom: 150px !important;
+    }
+    .label,
+    p {
+        font-size: 3em !important;
+    }
+    a {
+        font-size: 1.2em !important;
+    }
+    div.contenu {
+        padding-top: 100px !important;
+    }
+    .form-group {
+        margin-bottom: 1rem !important;
+        font-size: 0.7em !important;
+    }
+    .form-group label {
+        font-size: 3.5em !important;
+    }
+    footer p {
+        font-size: 1em !important;
+    }
+}
+
+@media only screen and (max-width: 375px) {
+    .label,
+    p {
+        font-size: 1.2em !important;
+    }
+    a {
+        font-size: 1.2em !important;
+    }
+    div.contenu {
+        padding-top: 100px !important;
+    }
+    .form-group {
+        margin-bottom: 2rem !important;
+        font-size: 0.5em !important;
+    }
+    .form-group label {
+        font-size: 2em !important;
+    }
+    div.bottom-footer {
+        font-size: 2em !important;
+    }
+}

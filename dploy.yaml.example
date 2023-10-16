@@ -1,0 +1,9 @@
+spacehamagent:
+    host: ftp.mydomain.com
+    port: 22
+    user: "username"
+    pass: "password"
+    exclude: ["*.yaml", "*.env"]
+    path:
+        local: ""
+        remote: "var/www/mypath"
