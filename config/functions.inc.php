@@ -265,6 +265,7 @@ Function ExecuterModule($module, $options = []){
 		PreparerVariablesModule($modExp[1]);
 	}
 	$nomModule = $modExp[0];
+    $nomModule = str_replace('.inc.php', '', $nomModule);
 
 	$filename = $cfg["params"]["DOCUMENT_ROOT"]."/../modules/".$nomModule."/module.php";
 
